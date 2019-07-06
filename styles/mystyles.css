@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(238, 192, 192);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+#time {
+    width: 170px;
+    height: 60px;
+    font-size: 20px;
+    line-height: 60px;
+    border: 1px solid rgb(18, 87, 4);
+    border-radius: 10px;
+    position: absolute;
+    left: 10px;
+    top: 30px;
+    color: rgb(18, 87, 4);
+    text-align: center;
+}
+.container--second {
+    background-color: rgb(238, 192, 192, 0.5);
+    position: absolute;
+    z-index: 10;
+    top:0;
+    left:0;
+}
+/* .game__card.selected {
+    /* display: inline-block; */
+    
+
+/* } */ 
+.button, .button-2 {
+    width: 200px;
+    height: 60px;
+    color: whitesmoke;
+    background-color: rgb(18, 87, 4);
+    font-size: 30px;
+    line-height: 60px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left:45%;
+
+}
+.button-2 {
+    display: none;
+    font-size: 20px;
+}
+.active {
+    display: block;
+}
+.hidden {
+    display: none;
+}
+.game {
+    width: 800px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid rgb(153, 12, 12);
+    /* box-sizing: border-box; */
+    perspective: 800px;
+}
+.game__card {
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    height: 140px;
+    margin: 3px;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    /* transition: 0.5s; */
+    
+}
+.card__front, .card__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid palevioletred;
+    backface-visibility: hidden;
+}
+.card__front {
+    background-image: url(../img/swekla.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.card__back {
+    font-size: 50px;
+    color: rgb(206, 22, 84);
+    text-align: center;
+    line-height: 140px;
+    background-color: white;
+    transform: rotateY(180deg);
+}
+.game__card:hover {
+    transform: scale(0.95);
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.game__card.flip {
+    transform: rotateY(180deg);
+}
