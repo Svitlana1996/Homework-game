@@ -25,6 +25,60 @@
     color: rgb(18, 87, 4);
     text-align: center;
 }
+#time-counter {
+    box-sizing: border-box;
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+    border: 1px solid rgb(18, 87, 4) transparent;
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    color: rgb(18, 87, 4);
+    border-radius: 10px;
+
+}
+.flip-clock-divider {
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    /* margin-right: 5px; */
+    
+}
+.flip-clock-label {
+    display: none;
+}
+.flip-clock-dot.top {
+    top: 15px;
+}
+.flip-clock-dot {
+    width: 5px;
+    height: 5px;
+    
+    
+}
+.flip-clock-wrapper ul li {
+    line-height: 60px;
+}
+.flip-clock-dot.bottom {
+    bottom: 15px;
+}
+.flip-clock-wrapper ul {
+    margin: 2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 10%;
+    height: 100%;
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 60px;
+}
+.flip-clock-wrapper ul li a div div.inn {
+    font-size: 50px;
+    color: rgb(18, 87, 4);
+    background-color: pink;
+}
+
 .container--second {
     background-color: rgb(238, 192, 192, 0.5);
     position: absolute;
@@ -108,6 +162,6 @@
     transition: 0.5s ease-in-out;
     cursor: pointer;
 }
-.game__card.flip {
+.game__card.switch {
     transform: rotateY(180deg);
 }
