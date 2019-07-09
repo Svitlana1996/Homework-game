@@ -21,22 +21,24 @@ $(document).ready(function(){
      });
        
      var counter = 0;     
-    var number = 10;
-    var cards = [];
-    var randomCards = [];
+     var number = 10;
+     var cards = [];
+     var randomCards = [];
     for(var i = 1; i <= number; i++){
         cards.push(i, i);
-      };
-      randomCards = cards.sort(() => 0.5 - Math.random());
+    };
+
+    randomCards = cards.sort(() => 0.5 - Math.random());
      console.log(randomCards);
-     assignCards();
-  function assignCards () {
+
+    assignCards();
+    function assignCards () {
       $('.game__card').each(function(index){
           $(this).attr('data-card-id', randomCards[index]);
       });
-  };
+     };
        
-    console.log(cards);
+    // console.log(cards);
     var clickedCard = false;
     var firstCard;
     var secondCard;
@@ -46,19 +48,26 @@ $(document).ready(function(){
         $("#time").html("Your clicks = " + counter);
         $(this).addClass('switch');
       
-        if (!clickedCard) {
+     
+
+    //  function defineCards (){
+            if (!clickedCard) {
             clickedCard = true;
             firstCard = $(this);
             $(this).find('.card__back').html('<div>'+$(this).data('cardId')+'</div');
-            console.log(firstCard);
+            // console.log(firstCard);
                     
         } else {
             clickedCard = false;
             secondCard = $(this);
             $(this).find('.card__back').html('<div>'+$(this).data('cardId')+'</div');
-            console.log(secondCard);
+            // console.log(secondCard);
+            matching(firstCard, secondCard);
         }
+        // };
+        
         // console.log(firstCard.data('cardId'), secondCard.data('cardId'));
+        function matching (){
             if(firstCard.data('cardId') == secondCard.data('cardId')) {
                $(firstCard).off('click');
                $(secondCard).off('click');
@@ -74,30 +83,39 @@ $(document).ready(function(){
       
              },1000);   
 
-      };
-      
+            };
+        };
+            
       if($('.switch').length == 20)
       {
-          clock.stop();
-        $('.container--second').removeClass('hidden');
+         clock.stop();
+         $('.container--second').removeClass('hidden');
          $('.button').hide();
          $('.button-2').addClass('active'); 
         
      } else {
          console.log('not yet');
-     }; 
+     };
+
+    });
+
     
-     
-     
-     $('.button-2').on('click', function (){
+        $('.button-2').on('click', function (){
          
         $('.game__card').removeClass('switch');
         $('.container--second').addClass('hidden');
         $(this).hide();
-
         saveResult(counter);
+       // location.reload();
+       });
+       
+    //  console.log($('.game__cards').length, $('.switch').length);
+         
+                           
+    // });
+    
 
-        function saveResult (result){
+     function saveResult (result){
             var oldResult = localStorage.getItem('result');
             var resultArr = [];
              var position = null;
@@ -122,19 +140,10 @@ $(document).ready(function(){
               localStorage.setItem('result', JSON.stringify(resultArr));
       
               setTimeout(()=> {
-            console.log(`Game is over. You spent ${counter} clicks to finish the game. Your position is ${position + 1} from ${resultArr.length} results`);
+            console.log(`Game is over. You spent ${counter} clicks to finish the game. Your position is ${position + 1} from ${resultArr.length} results with the time of ${120 - clock.getTime()} seconds`);
             }, 1000);   
             
         };
-        
-      
-        // location.reload();
-       });
-       
-       console.log($('.game__cards').length, $('.switch').length);
-         
-                           
-    });
     
 });
 
